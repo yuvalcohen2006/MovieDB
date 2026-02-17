@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDB - Dashboard</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <h1>IMDB Dashboard</h1>
+
+    <section>
+      <h2>Movies Management</h2>
+      <div class="main-dashboard">
+        <aside>
+          <form id="add-movie">
+            <h3>Add Movie</h3>
+            <input id="add-movie-name" placeholder="Movie Name" />
+            <input id="add-movie-rate" placeholder="Rating 1-10" />
+            <input id="add-movie-date" placeholder="yyyy/mm/dd" />
+            <button type="submit">Save Movie</button>
+          </form>
+        </aside>
+
+        <div class="req-side">
+          <form id="fetch-movies"><h4>Get all</h4><button>Fetch</button></form>
+          <form id="fetch-movie-by-id"><h4>By ID</h4><input id="fetch-movie-id" placeholder="id" /><button>Fetch</button></form>
+          <form id="fetch-movie-by-name"><h4>By Name</h4><input id="fetch-movie-name" placeholder="name" /><button>Search</button></form>
+          <form id="update-movie-by-id"><h4>Update by id</h4><input id="update-movie-id" placeholder="id" /><input id="update-movie-rate" placeholder="rate" /><input id="update-movie-date" placeholder="date" /><button>Update</button></form>
+          <form id="delete-movie-by-id" class="delete"><h4>Delete</h4><input id="delete-movie-id" placeholder="id" /><button>Delete</button></form>
+        </div>
+        <div class="display" id="movie-display">Movie data appears here...</div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>Actors Management</h2>
+      <div class="main-dashboard">
+        <aside>
+          <form id="add-actor">
+            <h3>Add Actor</h3>
+            <input id="actor-name" placeholder="Actor Name" />
+            <button type="submit">Save Actor</button>
+          </form>
+        </aside>
+
+        <div class="req-side">
+          <form id="fetch-actors"><h4>Get all</h4><button>Fetch</button></form>
+          <form id="fetch-actor-by-id"><h4>By ID</h4><input id="fetch-actor-id" placeholder="id" /><button>Fetch</button></form>
+          <form id="fetch-actor-by-name"><h4>By Name</h4><input id="fetch-actor-name" placeholder="name" /><button>Search</button></form>
+          <form id="update-actor-by-id"><h4>Update</h4><input id="update-actor-id" placeholder="id" /><input id="update-actor-age" placeholder="age" /><button>Update</button></form>
+          <form id="delete-actor-by-id" class="delete"><h4>Delete</h4><input id="delete-actor-id" placeholder="id" /><button>Delete</button></form>
+        </div>
+        <div class="display" id="actor-display">Actor data appears here...</div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>Special Requests</h2>
+      <div class="main-dashboard">
+        <aside></aside>
+        <div class="req-side special-grid special-span">
+          <form id="movies-by-actor-name"><h4>Movies by Actor</h4><input id="movies-by-actor-input" placeholder="Actor Name" /><button>Fetch</button></form>
+          <form id="movies-by-genre"><h4>Movies by Genre</h4><input id="movies-by-genre-input" placeholder="Genre" /><button>Fetch</button></form>
+          <form id="actors-rank-by-rating"><h4>Actors Rank by Avg Rating</h4><button>Fetch</button></form>
+          <form id="actors-rank-by-age"><h4>Actors Rank by Age</h4><button>Fetch</button></form>
+          <form id="movies-rank-by-release"><h4>Movies Rank by Release Date</h4><button>Fetch</button></form>
+          <form id="movies-above-rating"><h4>Movies Above Rating</h4><input id="movies-above-rating-input" placeholder="Rating" /><button>Fetch</button></form>
+          <form id="movies-between-years"><h4>Movies Between Years</h4><input id="movies-year-start" placeholder="From Year" /><input id="movies-year-end" placeholder="To Year" /><button>Fetch</button></form>
+        </div>
+        <div class="display" id="special-display">Special data appears here...</div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/api/handlers/movieHandlers.js"></script>
+    <script src="/api/handlers/actorHandlers.js"></script>
+  </body>
+</html>
