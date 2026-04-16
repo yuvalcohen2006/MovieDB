@@ -148,6 +148,7 @@ const getMoviesByGenre = async (req, res) => {
   const inputGenre = req.params.genre.trim().toLowerCase();
 
   try {
+    // MICHAL: שלפת את כל הסרטים מהdb ופילטרת בעצמך. זה מאוד לא יעיל, תן למונגוס לעבוד בשבילך
     const movies = await Movie.find({});
 
     const filteredMovies = movies.filter((movie) => {
@@ -164,6 +165,7 @@ const getMoviesByGenre = async (req, res) => {
 
 const getMoviesByRelease = async (req, res) => {
   try {
+    // MICHAL: תן למשתמש להחליט סדר עולה או יורד
     const movies = await Movie.find({}).sort({ Released: -1 });
 
     res.send(movies);
@@ -207,3 +209,8 @@ module.exports = {
   getMoviesAboveRating,
   getMoviesInRange,
 };
+
+// MICHAL: המטרה היא לאפשר חיפוש כמה שיותר מפורט.
+// כרגע בשביל להשיג את כל הסרטים של שחקן מסוים בג'אנר ספציפי בין טווח שנים שקיבל דירוג טוב דורש ארבע בקשות נפרדות והצלבה של המידע.
+// צריך לשלב ביניהם ולאפשר צמצום של הפילטור בעזרת query params
+// ניתן ורצוי גם להוסיף את הדירוג לזה - לפי מה מדרגים ולאיזה כיוון

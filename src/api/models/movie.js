@@ -18,6 +18,7 @@ const movieSchema = mongoose.Schema({
   WatchedAt: {
     type: Date,
   },
+  // MICHAL: צריך להיות ערך מינימלי ומקסימלי
   Rating: {
     type: Number,
     required: true,
@@ -32,6 +33,7 @@ const movieSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+  // MICHAL: חלק מהסרטים שייכים לכמה ג'אנרים. עדיף לשמור במערך כדי לאפשר חיפוש גמיש יותר.
   Genre: {
     type: String,
     required: true,

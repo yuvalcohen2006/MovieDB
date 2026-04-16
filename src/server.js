@@ -17,6 +17,8 @@ app.use("/api/handlers", express.static(path.join(__dirname, "api/handlers")));
 app.use("/styles", express.static(path.join(__dirname, "interface/styles")));
 app.use(express.json());
 
+// MICHAL: כפי שהערתי במטלה קודמת, תגדיר כבר את ההקדמה של הroutes כאן
+// app.use("/movies", movieRouter);
 app.use(movieRouter);
 app.use(actorRouter);
 

@@ -7,6 +7,7 @@ const getActor = (name) => {
       headers: { "X-Api-Key": process.env.ACTOR_API_KEY },
     })
     .then((res) => res.data[0]);
+    // MICHAL: גם כאן צריך catch, אם אתה יודע מקום שגיאה ספציפי צריך לטפל בו אישית, לא לתת לcatch הכללי של הבקשה להיכשל
 };
 
 module.exports = getActor;

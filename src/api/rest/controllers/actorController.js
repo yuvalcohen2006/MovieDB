@@ -1,6 +1,7 @@
 const Actor = require("../../models/actor");
 
 const status = {
+  // MICHAL: enums כותבים באותיות גדולות
   created: 201,
   badReq: 400,
   notFound: 404,
@@ -21,6 +22,7 @@ const getActors = async (req, res) => {
     const actors = await Actor.find({});
     res.send(actors);
   } catch (err) {
+    // MICHAL: המשתמש לא נתן שום פרטים בבקשה, לא אשמתו שהיא נכשלה. זה אמור להיות internal server error
     res.status(status.badReq).send(err.message);
   }
 };
@@ -49,6 +51,7 @@ const updateActor = async (req, res) => {
   try {
     const actor = await Actor.findById(req.params.id);
     if (!actor) return res.status(status.notFound).send("Actor not found");
+    // MICHAL: אתה לא בודק את הinput של המשתמש בכלל?
     Object.keys(req.body).forEach(
       (update) => (actor[update] = req.body[update]),
     );
@@ -86,6 +89,7 @@ const getActorsByAvgRating = async (req, res) => {
           avgRating: avgRating,
         };
       })
+      // MICHAL: תן למשתמש להחליט סדר עולה או יורד
       .sort((a, b) => {
         return b.avgRating - a.avgRating;
       });
@@ -96,8 +100,10 @@ const getActorsByAvgRating = async (req, res) => {
   }
 };
 
+// MICHAL: תקרא שוב מה הייתה המשימה
 const getActorsByAge = async (req, res) => {
   try {
+    // MICHAL: תן למשתמש להחליט סדר עולה או יורד
     const actors = await Actor.find({}).sort({ Age: -1 });
 
     res.send(actors);
@@ -116,3 +122,5 @@ module.exports = {
   getActorsByAvgRating,
   getActorsByAge
 };
+
+// MICHAL: התבקשת לאפשר Pagination לכל פעולות הfetching
